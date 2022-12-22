@@ -1,7 +1,9 @@
+import Navbar from "./components/Navbar/Navbar";
+
 function App() {
   return (
     <div>
-      <img src="/images/yt-logo.svg" alt="yt-logo" />
+      <Navbar />
     </div>
   );
 }
