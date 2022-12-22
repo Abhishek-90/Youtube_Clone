@@ -32,6 +32,10 @@ export const Menu = styled.div`
     &:hover {
       background-color: rgba(0, 0, 0, 0.15);
     }
+
+    @media (max-width: 768px) {
+      padding: 10px 6px;
+    }
   }
 
   & > a {
@@ -41,6 +45,10 @@ export const Menu = styled.div`
 
     & > img {
       width: 120px;
+
+      @media (max-width: 768px) {
+        width: 100px;
+      }
     }
   }
 `;
@@ -64,7 +72,7 @@ export const Search = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 200px;
+    width: 300px;
   }
 `;
 
@@ -85,7 +93,7 @@ export const SearchIcon = styled.div`
   }
 
   @media (max-width: 768px) {
-    right: 2px;
+    right: 5px;
   }
 `;
 
@@ -97,5 +105,9 @@ export const User = styled.div`
   & > img {
     width: 30px;
     border-radius: 50%;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
