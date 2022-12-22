@@ -96,5 +96,6 @@ export const User = styled.div`
 
   & > img {
     width: 30px;
+    border-radius: 50%;
   }
 `;

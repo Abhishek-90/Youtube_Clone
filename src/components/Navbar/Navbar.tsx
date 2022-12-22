@@ -18,7 +18,7 @@ function Navbar() {
         </S.SearchIcon>
       </S.Search>
       <S.User>
-        <img src="/images/search.svg" alt="" />
+        <img src="/images/user.svg" alt="" />
       </S.User>
     </S.Container>
   );
