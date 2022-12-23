@@ -7,12 +7,13 @@ const videoSlice = createSlice({
   name: "video",
   initialState: INITIAL_STATE,
   reducers: {
-    getVideos: (state: VideoList[], actions) => {
+    addVideos: (state: VideoList[], actions) => {
+      state = [];
       state = state.concat(actions.payload);
       return state;
     },
   },
 });
 
-export const { getVideos } = videoSlice.actions;
+export const { addVideos } = videoSlice.actions;
 export default videoSlice.reducer;
