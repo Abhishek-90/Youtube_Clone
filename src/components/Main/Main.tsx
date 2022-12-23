@@ -6,12 +6,7 @@ import { formatDistanceToNowStrict } from "date-fns";
 const getDate = (date: string): string => {
   const convertedDate = new Date(date);
   const formatedDate = formatDistanceToNowStrict(convertedDate);
-  const formatedDateArray = formatedDate.split(" ");
-  if (formatedDateArray[0] !== "1") {
-    return formatedDate;
-  }
-
-  return formatedDateArray.join(" ");
+  return formatedDate;
 };
 
 function Main() {
