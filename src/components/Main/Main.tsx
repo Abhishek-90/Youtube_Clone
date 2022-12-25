@@ -18,7 +18,7 @@ function Main() {
 
   useEffect(() => {
     fetch(
-      `${process.env.REACT_APP_YOUTUBE_VIDEO_LIST}part=player,statistics,snippet&key=${process.env.REACT_APP_YOUTUBE_API_KEY}&chart=mostPopular&pageToken=CAUQAA&maxResults=20`
+      `${process.env.REACT_APP_YOUTUBE_GET_VIDEO_LIST}part=player,statistics,snippet&key=${process.env.REACT_APP_YOUTUBE_API_KEY}&chart=mostPopular&pageToken=CAUQAA&maxResults=20`
     ).then((response: any) => {
       response.json().then((json: any) => {
         dispatch(addVideos(json.items));
