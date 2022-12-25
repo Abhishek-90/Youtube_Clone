@@ -81,11 +81,21 @@ const Content = styled.div`
 `;
 
 const VideoItem = styled.a`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
   border-radius: 10px;
   padding: 12px 16px;
+
+  &:hover {
+    z-index: 100;
+    background-color: white;
+    transition: transform 300ms;
+    transform: scale(1.1, 1.1);
+    border: 1px solid black;
+    padding: 12px 0 0 0;
+  }
 `;
 
 const Thumbnail = styled.div`
