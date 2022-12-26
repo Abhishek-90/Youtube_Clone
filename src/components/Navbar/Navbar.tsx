@@ -38,7 +38,7 @@ function Navbar() {
         .catch((error) => {
           console.log(error.message);
         });
-    }, 800);
+    }, 500);
   }
   return (
     <S.Container>

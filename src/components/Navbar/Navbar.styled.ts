@@ -10,6 +10,7 @@ export const Container = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: space-between;
+  z-index: 100;
 `;
 
 export const Menu = styled.div`

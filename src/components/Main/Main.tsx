@@ -89,7 +89,7 @@ const VideoItem = styled.a`
   padding: 12px 16px;
 
   &:hover {
-    z-index: 100;
+    z-index: 10;
     background-color: white;
     transition: transform 300ms;
     transform: scale(1.1, 1.1);
@@ -104,9 +104,6 @@ const Thumbnail = styled.div`
     width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    @media (min-width: 769px) {
-      border-radius: 10px;
-    }
   }
 `;
 
