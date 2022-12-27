@@ -112,3 +112,16 @@ export const User = styled.div`
     display: none;
   }
 `;
+
+export const SignInButton = styled.button`
+  padding: 0 16px;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  border-radius: 50px;
+  color: rgba(0, 0, 230, 0.6);
+  font-weight: 600;
+  &:hover {
+    background-color: rgba(0, 0, 230, 0.08);
+  }
+`;

@@ -60,9 +60,10 @@ function Navbar() {
           <img src="/images/search.svg" alt="search-icon" />
         </S.SearchIcon>
       </S.Search>
-      <S.User>
+      {/* <S.User>
         <img src="/images/user.svg" alt="" />
-      </S.User>
+      </S.User> */}
+      <S.SignInButton>Sign In</S.SignInButton>
     </S.Container>
   );
 }
