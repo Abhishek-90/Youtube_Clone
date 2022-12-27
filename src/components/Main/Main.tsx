@@ -72,6 +72,7 @@ const Content = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   height: 100vh;
+  row-gap: 30px;
 
   @media (max-width: 768px) {
     display: flex;
@@ -93,8 +94,8 @@ const VideoItem = styled.a`
     background-color: white;
     transition: transform 300ms;
     transform: scale(1.1, 1.1);
-    border: 1px solid black;
     padding: 12px 0 0 0;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.6);
   }
 `;
 
