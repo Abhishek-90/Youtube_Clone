@@ -33,7 +33,13 @@ function Main() {
           return (
             <S.VideoItem key={item.id}>
               <S.Thumbnail>
-                <img src={item.snippet.thumbnails.high.url} alt="" />
+                <img
+                  src={
+                    item.snippet.thumbnails.maxres?.url ||
+                    item.snippet.thumbnails.medium?.url
+                  }
+                  alt=""
+                />
               </S.Thumbnail>
               <S.VideoInformation>
                 <div>
