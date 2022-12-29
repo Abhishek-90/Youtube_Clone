@@ -57,9 +57,10 @@ export const Menu = styled.div`
 export const Search = styled.div`
   display: flex;
   align-items: center;
-  max-width: 500px;
-  flex: 1;
   position: relative;
+  flex-grow: 0;
+  flex-shrink: 1.5;
+  flex-basis: 450px;
   & > input {
     height: 32px;
     border-radius: 50px;
@@ -102,27 +103,32 @@ export const SearchIcon = styled.div`
 export const User = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
   flex-direction: column;
+  flex-basis: 100px;
 
   & > img {
     width: 30px;
     border-radius: 50%;
   }
 
-  & > button {
+  & > div > button {
     display: none;
   }
 
   &:hover {
-    & > button {
+    & > div {
       display: flex;
-      z-index: 1000;
-      position: absolute;
-      top: 45px;
-      right: 15px;
-      padding: 6px;
-      border: none;
+      background-color: blue;
+      & > button {
+        display: flex;
+        z-index: 1000;
+        position: absolute;
+        top: 45px;
+        right: 10px;
+        padding: 6px;
+        border: none;
+      }
     }
   }
 
@@ -132,7 +138,7 @@ export const User = styled.div`
 `;
 
 export const SignInButton = styled.button`
-  padding: 0 12px;
+  padding: 12px;
   background-color: transparent;
   border: none;
   font-size: 14px;

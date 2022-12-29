@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import * as S from "./Navbar.styled";
 import { addVideos } from "../../store/VideoListSlice";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase";
 import { removeUser, setUser } from "../../store/UserSlice";
+import * as S from "./Navbar.styled";
 
 function Navbar() {
   let setTimeoutId: any = null;
@@ -75,14 +75,18 @@ function Navbar() {
           <img src="/images/search.svg" alt="search-icon" />
         </S.SearchIcon>
       </S.Search>
-      {userInfo !== null ? (
-        <S.User>
-          <img src={userInfo.photoURL} alt="" />
-          <button onClick={() => dispatch(removeUser())}>Sign Out</button>
-        </S.User>
-      ) : (
-        <S.SignInButton onClick={signInWithGoogle}>Sign In</S.SignInButton>
-      )}
+      <S.User>
+        {userInfo ? (
+          <>
+            <img src={userInfo.photoURL} alt="" />
+            <div>
+              <button onClick={() => dispatch(removeUser())}>Sign Out</button>
+            </div>
+          </>
+        ) : (
+          <S.SignInButton onClick={signInWithGoogle}>Sign In</S.SignInButton>
+        )}
+      </S.User>
     </S.Container>
   );
 }
