@@ -103,10 +103,27 @@ export const User = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   & > img {
     width: 30px;
     border-radius: 50%;
+  }
+
+  & > button {
+    display: none;
+  }
+
+  &:hover {
+    & > button {
+      display: flex;
+      z-index: 1000;
+      position: absolute;
+      top: 45px;
+      right: 15px;
+      padding: 6px;
+      border: none;
+    }
   }
 
   @media (max-width: 768px) {

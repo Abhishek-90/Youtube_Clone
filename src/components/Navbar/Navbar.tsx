@@ -3,7 +3,7 @@ import * as S from "./Navbar.styled";
 import { addVideos } from "../../store/VideoListSlice";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase";
-import { setUser } from "../../store/UserSlice";
+import { removeUser, setUser } from "../../store/UserSlice";
 
 function Navbar() {
   let setTimeoutId: any = null;
@@ -78,6 +78,7 @@ function Navbar() {
       {userInfo !== null ? (
         <S.User>
           <img src={userInfo.photoURL} alt="" />
+          <button onClick={() => dispatch(removeUser())}>Sign Out</button>
         </S.User>
       ) : (
         <S.SignInButton onClick={signInWithGoogle}>Sign In</S.SignInButton>
