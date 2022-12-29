@@ -57,7 +57,8 @@ export const Menu = styled.div`
 export const Search = styled.div`
   display: flex;
   align-items: center;
-  width: 500px;
+  max-width: 500px;
+  flex: 1;
   position: relative;
   & > input {
     height: 32px;
@@ -114,10 +115,10 @@ export const User = styled.div`
 `;
 
 export const SignInButton = styled.button`
-  padding: 0 16px;
+  padding: 0 12px;
   background-color: transparent;
   border: none;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 50px;
   color: rgba(0, 0, 230, 0.6);
   font-weight: 600;
