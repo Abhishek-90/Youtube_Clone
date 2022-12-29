@@ -1,10 +1,24 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as S from "./Navbar.styled";
 import { addVideos } from "../../store/VideoListSlice";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../firebase";
+import { setUser } from "../../store/UserSlice";
 
 function Navbar() {
   let setTimeoutId: any = null;
   const dispatch = useDispatch();
+  const userInfo = useSelector((state: any) => state.user.user);
+
+  function signInWithGoogle() {
+    signInWithPopup(auth, provider)
+      .then((result: any) => {
+        dispatch(setUser(result.user));
+      })
+      .catch((e: ErrorEvent) => {
+        console.error(e.message);
+      });
+  }
 
   function search(key: string) {
     if (setTimeoutId !== null) {
@@ -40,6 +54,7 @@ function Navbar() {
         });
     }, 500);
   }
+
   return (
     <S.Container>
       <S.Menu>
@@ -60,10 +75,13 @@ function Navbar() {
           <img src="/images/search.svg" alt="search-icon" />
         </S.SearchIcon>
       </S.Search>
-      {/* <S.User>
-        <img src="/images/user.svg" alt="" />
-      </S.User> */}
-      <S.SignInButton>Sign In</S.SignInButton>
+      {userInfo !== null ? (
+        <S.User>
+          <img src={userInfo.photoURL} alt="" />
+        </S.User>
+      ) : (
+        <S.SignInButton onClick={signInWithGoogle}>Sign In</S.SignInButton>
+      )}
     </S.Container>
   );
 }
