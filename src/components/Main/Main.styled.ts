@@ -16,6 +16,7 @@ export const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-top: 30px;
 
   @media (max-width: 768px) {
     display: flex;
