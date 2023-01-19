@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { formatDistanceToNowStrict } from "date-fns";
 import { useSelector } from "react-redux/es/exports";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
@@ -15,6 +15,7 @@ const getDate = (date: string): string => {
 
 function Main() {
   const videos: IVideoData[] = useSelector((state: any) => state.videos);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,6 +23,7 @@ function Main() {
       (response: any) => {
         response.json().then((json: any) => {
           dispatch(addVideos(json.videoData));
+          setIsLoading(false);
         });
       }
     );
@@ -29,37 +31,40 @@ function Main() {
 
   return (
     <S.Container>
-      <S.Content>
-        {videos.map((item: IVideoData) => {
-          return (
-            <S.VideoItem key={item.id}>
-              <S.Thumbnail>
-                <img src={item.thumbnailUrl} alt="" />
-              </S.Thumbnail>
-              <S.VideoInformation>
-                <div>
-                  <img
-                    src={
-                      item.channelThumbnailUrl
-                        ? item.channelThumbnailUrl
-                        : "/images/user.svg"
-                    }
-                    alt=""
-                  />
-                </div>
-                <div>
-                  <span>{item.title}</span>
-                  <span>{item.channelTitle}</span>
-                  <span>
-                    {millify(item.viewCount)} Views |{" "}
-                    {getDate(item.publishedAt)} ago
-                  </span>
-                </div>
-              </S.VideoInformation>
-            </S.VideoItem>
-          );
-        })}
-      </S.Content>
+      {isLoading && <img src="/images/spinner.svg" alt="spinner" />}
+      {!isLoading && (
+        <S.Content>
+          {videos.map((item: IVideoData) => {
+            return (
+              <S.VideoItem key={item.id}>
+                <S.Thumbnail>
+                  <img src={item.thumbnailUrl} alt="" />
+                </S.Thumbnail>
+                <S.VideoInformation>
+                  <div>
+                    <img
+                      src={
+                        item.channelThumbnailUrl
+                          ? item.channelThumbnailUrl
+                          : "/images/user.svg"
+                      }
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <span>{item.title}</span>
+                    <span>{item.channelTitle}</span>
+                    <span>
+                      {millify(item.viewCount)} Views |{" "}
+                      {getDate(item.publishedAt)} ago
+                    </span>
+                  </div>
+                </S.VideoInformation>
+              </S.VideoItem>
+            );
+          })}
+        </S.Content>
+      )}
     </S.Container>
   );
 }
