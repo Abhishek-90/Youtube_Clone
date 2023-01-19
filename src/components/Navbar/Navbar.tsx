@@ -6,7 +6,7 @@ import { removeUser, setUser } from "../../store/UserSlice";
 import * as S from "./Navbar.styled";
 
 function Navbar() {
-  let setTimeoutId: any = null;
+  let setTimeoutId: NodeJS.Timeout | null = null;
   const dispatch = useDispatch();
   const userInfo = useSelector((state: any) => state.user.user);
 
@@ -40,7 +40,7 @@ function Navbar() {
           fetch(
             `${
               process.env.REACT_APP_YOUTUBE_GET_VIDEO_LIST
-            }part=player,statistics,snippet&key=${
+            }?part=player,statistics,snippet&key=${
               process.env.REACT_APP_YOUTUBE_API_KEY
             }&id=${ids.join(",")}`
           )
