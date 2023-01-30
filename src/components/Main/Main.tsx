@@ -19,20 +19,22 @@ function Main() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_YOUTUBE_GET_VIDEO_LIST}`).then(
-      (response: any) => {
-        response.json().then((json: any) => {
+    fetch(`${process.env.REACT_APP_YOUTUBE_GET_VIDEO_LIST}`)
+      .then((response: any) => response.json())
+      .then((json: any) => {
+        if (json.status === 200) {
           dispatch(addVideos(json.videoData));
           setIsLoading(false);
-        });
-      }
-    );
+        } else if (json.status === 404) {
+          setIsLoading(false);
+        }
+      });
   }, []);
 
   return (
     <S.Container>
       {isLoading && <img src="/images/spinner.svg" alt="spinner" />}
-      {!isLoading && (
+      {!isLoading && videos.length > 0 && (
         <S.Content>
           {videos.map((item: IVideoData) => {
             return (
