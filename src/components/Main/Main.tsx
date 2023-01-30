@@ -22,12 +22,9 @@ function Main() {
     fetch(`${process.env.REACT_APP_YOUTUBE_GET_VIDEO_LIST}`)
       .then((response: any) => response.json())
       .then((json: any) => {
-        if (json.status === 200) {
-          dispatch(addVideos(json.videoData));
-          setIsLoading(false);
-        } else if (json.status === 404) {
-          setIsLoading(false);
-        }
+        dispatch(addVideos(json.videoData));
+        setIsLoading(false);
+        // setIsLoading(false);
       });
   }, []);
 
