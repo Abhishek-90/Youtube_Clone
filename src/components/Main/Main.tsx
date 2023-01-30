@@ -19,7 +19,9 @@ function Main() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_YOUTUBE_GET_VIDEO_LIST}`)
+    fetch(
+      `${process.env.REACT_APP_BACKEND_URL}${process.env.REACT_APP_YOUTUBE_GET_VIDEO_LIST}`
+    )
       .then((response: any) => response.json())
       .then((json: any) => {
         dispatch(addVideos(json.videoData));
