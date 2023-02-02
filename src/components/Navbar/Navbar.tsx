@@ -27,30 +27,14 @@ function Navbar() {
 
     setTimeoutId = setTimeout(() => {
       fetch(
-        `${process.env.REACT_APP_YOUTUBE_SEARCH_VIDEO_LIST}type=videos&key=${process.env.REACT_APP_YOUTUBE_API_KEY}&part=snippet&q=${key}&maxResults=20`
+        `${process.env.REACT_APP_BACKEND_URL}${process.env.REACT_APP_YOUTUBE_SEARCH_VIDEO_LIST}?searchKey=${key}`
       )
-        .then((response: any) => {
-          return response.json();
-        })
+        .then((response: any) => response.json())
         .then((json) => {
-          const items = json.items;
-          const ids = items.map((item: any) => {
-            return item.id.videoId;
-          });
-          fetch(
-            `${
-              process.env.REACT_APP_YOUTUBE_GET_VIDEO_LIST
-            }?part=player,statistics,snippet&key=${
-              process.env.REACT_APP_YOUTUBE_API_KEY
-            }&id=${ids.join(",")}`
-          )
-            .then((response) => {
-              return response.json();
-            })
-            .then((json) => dispatch(addVideos(json.items)));
+          dispatch(addVideos(json.videoData));
         })
         .catch((error) => {
-          console.log(error.message);
+          console.error(error.message);
         });
     }, 500);
   }
